@@ -27,5 +27,6 @@ setup(
     install_requires=[
         'cssutils',
         'BeautifulSoup'
-    ]
+    ],
+    packages=['django_inlinecss']
 )
