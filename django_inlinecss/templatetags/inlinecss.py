@@ -1,7 +1,7 @@
 from django import template
 
 from django.utils.encoding import smart_unicode
-from django.contrib.staticfiles.storage import staticfiles_storage
+from django.contrib.staticfiles.finders import find
 
 from django_inlinecss import conf
 
@@ -20,7 +20,7 @@ class InlineCssNode(template.Node):
             path = expression.resolve(context, True)
             if path is not None:
                 path = smart_unicode(path)
-            expanded_path = staticfiles_storage.path(path)
+            expanded_path = find(path)
 
             with open(expanded_path) as css_file:
                 css = ''.join((css, css_file.read()))
